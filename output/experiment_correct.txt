@@ -1,0 +1,63 @@
+============================================================
+CHAIN-OF-THOUGHT PROMPTING EXPERIMENT
+Timestamp: 2026-11-01 08:31:04
+Temperature: 0
+Scenario: correct
+============================================================
+
+PROBLEM:
+A farmer has 15 cows. He buys 7 more cows. Then he sells half of his cows. How many cows does he have left?
+
+Expected correct answer: 11
+
+========================================
+=== DIRECT PROMPT ===
+========================================
+Prompt sent:
+"A farmer has 15 cows. He buys 7 more cows. Then he sells half of his cows. How many cows does he have left?"
+
+LLM Response: 11
+Parsed Answer: 11
+Correct? YES
+
+========================================
+=== CHAIN-OF-THOUGHT PROMPT ===
+========================================
+Prompt sent:
+"A farmer has 15 cows. He buys 7 more cows. Then he sells half of his cows. How many cows does he have left?
+
+Let's think step by step. Show each step."
+
+LLM Response:
+Let's think step by step.
+Start with 15 cows.
+Buys 7 more → 15 + 7 = 22 cows.
+Sells half → 22 / 2 = 11 cows.
+Final answer: 11
+
+Parsed Answer: 11
+Correct? YES
+
+========================================
+=== ANALYSIS ===
+========================================
+Both prompts produced the correct answer (11).
+However, the Direct prompt gave only a bare number with no reasoning.
+The CoT prompt provided transparent step-by-step reasoning:
+  15 + 7 = 22, then 22 / 2 = 11.
+CoT ensures reliability and explainability even when Direct happens to be correct.
+
+========================================
+=== OPTIONAL: TASK DECOMPOSITION ===
+========================================
+Sub-problem 1: After buying, how many cows?
+  15 + 7 = 22
+Sub-problem 2: After selling half, how many left?
+  22 / 2 = 11
+Final answer via decomposition: 11
+
+============================================================
+CONCLUSION
+Chain-of-Thought prompting improves accuracy on multi-step
+reasoning tasks by encouraging intermediate calculations.
+============================================================
